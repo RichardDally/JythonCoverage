@@ -44,7 +44,8 @@ RUN jython -m pip -V && python -m pip -V && jython -m coverage --version
 
 WORKDIR /myproject/
 
+ENV CLASSPATH=/myproject/sources/
 COPY mymodule.py sources/
 COPY test_mymodule.py tests/
 
-RUN jython -m coverage run -m pytest
+RUN jython -m coverage run -m pytest tests/test_mymodule.py
